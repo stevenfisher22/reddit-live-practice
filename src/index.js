@@ -8,13 +8,24 @@ class Reddit extends React.Component {
         posts: []
     };
 
+    // FETCH API CALL
     componentDidMount() {
-        axios.get(`https://www.reddit.com/r/reactjs.json`)
-        .then(res => {
-            const posts = res.data.data.children.map(obj => obj.data);
-            this.setState({posts})
-        })
+        fetch('https://www.reddit.com/r/reactjs.json')
+            .then(res => res.json())
+            .then(result => {
+                const posts = result.data.children.map(obj => obj.data);
+                this.setState({posts})
+            })
     };
+
+    // AXIOS API CALL
+    // componentDidMount() {
+    //     axios.get(`https://www.reddit.com/r/reactjs.json`)
+    //     .then(res => {
+    //         const posts = res.data.data.children.map(obj => obj.data);
+    //         this.setState({posts})
+    //     })
+    // };
 
     render() {
         return (
