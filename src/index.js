@@ -10,7 +10,7 @@ class Reddit extends React.Component {
 
     // FETCH API CALL
     componentDidMount() {
-        fetch('https://www.reddit.com/r/reactjs.json')
+        fetch('https://www.reddit.com/r/politicalhumor.json')
             .then(res => res.json())
             .then(result => {
                 const posts = result.data.children.map(obj => obj.data);
@@ -35,6 +35,7 @@ class Reddit extends React.Component {
                     {this.state.posts.map(post => (
                         <li key={post.id}>
                             <a href={post.url}>{post.title}</a>
+                            <img src={post.url} />
                         </li>
                     ))}
                 </ul>
